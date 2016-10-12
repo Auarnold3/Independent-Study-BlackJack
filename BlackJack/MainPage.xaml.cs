@@ -22,13 +22,14 @@ namespace BlackJack
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        int[] cardArrayH = new int[12];
-        int[] cardArrayD = new int[12];
-        int[] cardArrayS = new int[12];
-        int[] cardArrayC = new int[12];
+        int[] cardArrayH = new int[13];
+        int[] cardArrayD = new int[13];
+        int[] cardArrayS = new int[13];
+        int[] cardArrayC = new int[13];
         Random suit = new Random();      //Random generator for the suit (1,5)
         Random card = new Random();      //Random generator for the card (1,14)
-        Boolean gameStarted = false;
+        Boolean card1Chosen = false;
+        Boolean card2Chosen = false;
 
         public MainPage()
         {
@@ -42,19 +43,109 @@ namespace BlackJack
             }
         }
 
-        private void startGame()
+        private void drawFirstCard()
         {
-            if (gameStarted == false)
+            if (card1Chosen == false)
             {
                 int suitChosen = suit.Next(1, 5); //1 is inclusive, 5 is upper-bound EXCLUSIVE
-                int cardChosen = chooseCard(suitChosen); //Card number being returned by the random integer value
-                gameStarted = true;                                         //chipTotal.Text = chipAmt.ToString();
+                int playerCard = chooseCard(suitChosen); //Card number being returned by the random integer value
+                card1Chosen = true;
+                if (playerCard > 1 || playerCard < 11)
+                {
+                    randP1.Text = playerCard.ToString();
+                }
+                else if (playerCard == 1)
+                {
+                    randP1.Text = "Ace";
+                }
+                else if (playerCard == 11)
+                {
+                    randP1.Text = "Jack";
+                }
+                else if (playerCard == 12)
+                {
+                    randP1.Text = "Queen";
+                }
+                else if (playerCard == 13)
+                {
+                    randP1.Text = "King";
+                }
+
+                suitChosen = suit.Next(1, 5);     //Re-do the proces for the dealer's card
+                int dealerCard = chooseCard(suitChosen);  //pick another card for the dealer//chipTotal.Text = chipAmt.ToString();
+                if(dealerCard > 1 || dealerCard < 11)
+                {
+                    randD1.Text = dealerCard.ToString();
+                }else if(dealerCard == 1)
+                {
+                    randD1.Text = "Ace";
+                }else if(dealerCard == 11)
+                {
+                    randD1.Text = "Jack";
+                }else if(dealerCard == 12)
+                {
+                    randD1.Text = "Queen";
+                }else if(dealerCard == 13)
+                {
+                    randD1.Text = "King";
+                }
+            }
+        }
+        private void drawSecondCard()
+        {
+            if (card2Chosen == false)
+            {
+                int suitChosen = suit.Next(1, 5); //1 is inclusive, 5 is upper-bound EXCLUSIVE
+                int playerCard = chooseCard(suitChosen); //Card number being returned by the random integer value
+                if (playerCard > 1 || playerCard < 11)
+                {
+                    randP2.Text = playerCard.ToString();
+                }
+                else if (playerCard == 1)
+                {
+                    randP2.Text = "Ace";
+                }
+                else if (playerCard == 11)
+                {
+                    randP2.Text = "Jack";
+                }
+                else if (playerCard == 12)
+                {
+                    randP2.Text = "Queen";
+                }
+                else if (playerCard == 13)
+                {
+                    randP2.Text = "King";
+                }
+                suitChosen = suit.Next(1, 5);     //Re-do the proces for the dealer's card
+                int dealerCard = chooseCard(suitChosen);  //pick another card for the dealer
+                card2Chosen = true;
+                if (dealerCard > 1 || dealerCard < 11)
+                {
+                    randD2.Text = dealerCard.ToString();
+                }
+                else if (dealerCard == 1)
+                {
+                    randD2.Text = "Ace";
+                }
+                else if (dealerCard == 11)
+                {
+                    randD2.Text = "Jack";
+                }
+                else if (dealerCard == 12)
+                {
+                    randD2.Text = "Queen";
+                }
+                else if (dealerCard == 13)
+                {
+                    randD2.Text = "King";
+                }
             }
         }
         public int chooseCard(int suit)
         {
             int result = 0;
-            int cardChosen = card.Next(1, 14);
+            int cardChosen = card.Next(0, 13);
             if(suit == 1) //Hearts cardArrayH
             {
                 if(cardArrayH[cardChosen] == 1) // 1 means the card has already been drawn
@@ -118,7 +209,12 @@ namespace BlackJack
 
         private void okClick(object sender, RoutedEventArgs e)
         {
-            startGame();
+            drawFirstCard();
+        }
+
+        private void Click(object sender, RoutedEventArgs e)
+        {
+            drawSecondCard();
         }
     }
 }

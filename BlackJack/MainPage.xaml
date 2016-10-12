@@ -8,8 +8,16 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="61,47,0,0" TextWrapping="Wrap" Text="Welcome To Blackjack" VerticalAlignment="Top" SelectionChanged="textBlock_SelectionChanged" FontSize="30" Width="300"/>
-        <Button x:Name="button" Content="Start Game" HorizontalAlignment="Left" Margin="160,187,0,0" VerticalAlignment="Top" Click="okClick"/>
-
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="61,47,0,0" TextWrapping="Wrap" Text="Welcome To Blackjack" VerticalAlignment="Top" FontSize="30" Width="300"/>
+        <Button x:Name="startGame" Content="Draw First Card" HorizontalAlignment="Left" Margin="132,262,0,0" VerticalAlignment="Top" Click="okClick" Height="54" Width="176"/>
+        <Button x:Name="nextCard" Content="Draw Second Card" HorizontalAlignment="Left" Margin="132,360,0,0" VerticalAlignment="Top" Height="57" Width="176" ClickMode="Press" Click="Click"/>
+        <TextBlock x:Name="dealerFirst" HorizontalAlignment="Left" Height="43" Margin="61,515,0,0" TextWrapping="Wrap" Text="Dealer's First Card" VerticalAlignment="Top" Width="93"/>
+        <TextBlock x:Name="dealerSecond" HorizontalAlignment="Left" Margin="61,602,0,0" TextWrapping="Wrap" Text="Dealer's Second Card" VerticalAlignment="Top" Height="44" Width="93"/>
+        <TextBlock x:Name="playerFirst" HorizontalAlignment="Left" Height="43" Margin="240,515,0,0" TextWrapping="Wrap" Text="Your First Card" VerticalAlignment="Top" Width="68"/>
+        <TextBlock x:Name="playerSecond" HorizontalAlignment="Left" Height="44" Margin="240,602,0,0" TextWrapping="Wrap" Text="Your Second Card" VerticalAlignment="Top" Width="68"/>
+        <TextBox x:Name="randD1" HorizontalAlignment="Left" Height="43" Margin="159,515,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="34"/>
+        <TextBox x:Name="randD2" HorizontalAlignment="Left" Height="44" Margin="159,602,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="64"/>
+        <TextBox x:Name="randP1" HorizontalAlignment="Left" Height="43" Margin="313,515,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="48"/>
+        <TextBox x:Name="randP2" HorizontalAlignment="Left" Height="44" Margin="313,602,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="53"/>
     </Grid>
 </Page>
